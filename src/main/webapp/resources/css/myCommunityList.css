@@ -1,0 +1,16 @@
+#cardList {
+	width: 1318px;
+	float: left;
+	padding: 30px 60px 20px 20px;
+}
+
+#btn_detail {
+	background-color: #FFD1FF;
+	border-color: #FFD1FF;
+	color: white;
+}
+
+#btn_write {
+	background-color: #FFD1FF; 
+	border-color: #FFD1FF;
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.UsedGoodsMapper">
+	<sql id="usedGoodsCols">
+		g_id, imageUrl,
+		title, content,
+		enrollDt, price,
+		likes, replyCnt,
+		u_id
+	</sql>
+	
+	<!-- UsedGoods 상세보기 -->
+	<select id="getUsedGoods" resultType="UsedGoods">
+		SELECT <include refid="usedGoodsCols" />
+		FROM UsedGoods
+		WHERE g_id=#{g_id}
+	</select>
+	
+	<!-- UsedGoods 목록 -->
+	<select id="getUsedGoodsList" resultType="UsedGoods">
+		SELECT <include refid="usedGoodsCols" />
+		FROM UsedGoods
+		ORDER BY enrollDt DESC
+	</select>
+	
+	<!-- Member의 UsedGoods 작성 목록 -->
+	<select id="getMemberUsedGoodsList" resultType="UsedGoods">
+		SELECT <include refid="usedGoodsCols" />
+		FROM UsedGoods
+		WHERE u_id=#{u_id}
+		ORDER BY enrollDt DESC
+	</select>
+	
+	<select id="getUsedGoodsCntByU_id" resultType="int">
+		SELECT COUNT(*)
+		FROM UsedGoods
+		WHERE u_id=#{u_id}
+	</select>
+	
+	<select id="getU_IdByUsedGoods" resultType="int" parameterType="int">
+		SELECT u_id
+		FROM UsedGoods
+		WHERE g_id=#{g_id}
+	</select>
+	
+	<!-- UsedGoods 작성 -> sequence, default 값에 따라 selectKey, SYSDATE 사용 -->
+	<insert id="insertUsedGoods" parameterType="UsedGoods">
+		INSERT INTO UsedGoods (<include refid="usedGoodsCols" />)
+		VALUES (#{g_id}, #{imageUrl}, #{title}, #{content}, SYSDATE, #{price}, #{likes}, #{replyCnt}, #{u_id})
+		<selectKey resultType="int" keyProperty="g_id" order="BEFORE">
+			SELECT NVL(MAX(g_id) + 1, 1) FROM UsedGoods
+		</selectKey>
+	</insert>
+	
+	<!-- UsedGoods 수정 -->
+	<update id="updateUsedGoods" parameterType="UsedGoods">
+		UPDATE UsedGoods
+		SET imageUrl=#{imageUrl},
+		title=#{title},
+		content=#{content},
+		enrollDt=SYSDATE,
+		price=#{price},
+		likes=#{likes},
+		replyCnt=#{replyCnt},
+		u_id=#{u_id}
+		WHERE g_id=#{g_id}
+	</update>
+	
+	<!-- UsedGoods 삭제 -> UI상에서 세션 아이디 확인해 본인만 수정/삭제 버튼을 띄워 g_id만 비교 -->
+	<delete id="deleteUsedGoods" parameterType="int">
+		DELETE FROM UsedGoods
+		WHERE #{g_id}=g_id
+	</delete>
+	
+	<!-- 댓글수 -->
+	<update id="updateGoodsReplyCnt">
+		UPDATE UsedGoods
+		SET replyCnt=replyCnt+#{amount}
+		WHERE g_id=#{g_id}
+	</update>
+	
+	<!-- 좋아요 수 -->
+	<update id="updateGoodsLikesCnt">
+		UPDATE UsedGoods
+		SET likes=likes+#{amount}
+		WHERE g_id=#{g_id}
+	</update>
+</mapper>

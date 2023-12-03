@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.ItemMapper">
+	<sql id="itemCols">
+		item_id, category_id, spe_id,
+		itemName, price, brand,
+		imageUrl, comments
+	</sql>
+	
+	<sql id="filteringCols">
+		i.item_id, category_id, spe_id,
+		itemName, price, brand,
+		imageUrl, comments
+	</sql>
+	
+	<select id="getItem" parameterType="int" resultType="Item">
+		SELECT <include refid="itemCols" />
+		FROM Item
+		WHERE item_id=#{item_id}
+	</select>
+	
+	<sql id="filtering">
+		SELECT <include refid="filteringCols" />
+		FROM Item i JOIN Filter f ON i.item_id = f.item_id 
+		<where>
+			i.spe_id=${spe_id} AND f.age=${age} 
+			<if test="category_id == 0">
+				AND (category_id=1 OR category_id=2)
+			</if>
+			<if test="category_id != 0">
+				AND category_id=${category_id}
+			</if>
+			<if test="stuffList != null">
+				<foreach collection="stuffList" item="s" open="AND (" close=")" separator="OR">
+					f.stuff like '%' || '${s}' || '%'
+				</foreach>
+			</if>
+			<if test="featureList != null">
+				<foreach collection="featureList" item="f" open="AND (" close=")" separator="OR">
+					f.feature like '%' || '${f}' || '%'
+				</foreach> 
+			</if>
+		</where>
+	</sql>
+	
+	<select id="getFilterItemList" parameterType="java.util.HashMap" resultType="Item">
+		<include refid="filtering" />
+	</select>
+	
+	<select id="orderByFiltering" parameterType="java.util.HashMap" resultType="Item">
+		SELECT <include refid="itemCols" />
+		FROM (<include refid="filtering" />)
+		ORDER BY ${stand} ${od}
+	</select>
+	
+	<select id="orderByItem" resultType="Item">
+		SELECT <include refid="itemCols" />
+		FROM Item
+		<where>
+			spe_id=${spe_id}
+			<if test="category_id != 0">
+				AND category_id=${category_id}
+			</if>
+		</where>
+		ORDER BY ${stand} ${od}
+	</select>
+</mapper>

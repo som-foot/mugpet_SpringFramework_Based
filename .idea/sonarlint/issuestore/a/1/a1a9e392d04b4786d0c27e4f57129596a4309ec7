@@ -1,0 +1,19 @@
+
+t
+java:S2293H"YReplace the type specification in this constructor call with the diamond operator ("<>").(‡Ë×™þÿÿÿÿ
+o
+java:S2293K"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¬Îù
+t
+java:S2293N"YReplace the type specification in this constructor call with the diamond operator ("<>").(´Çð•ýÿÿÿÿ
+t
+java:S2293i"YReplace the type specification in this constructor call with the diamond operator ("<>").(¦õÛÞýÿÿÿÿ
+o
+java:S2293u"YReplace the type specification in this constructor call with the diamond operator ("<>").(Êý‚¯
+k	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Û³¹ûÿÿÿÿ
+k	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¡Åèÿÿÿÿÿ
+n
+java:S3753"XAdd a call to "setComplete()" on the SessionStatus object in a "@RequestMapping" method.(‡Çˆü
+]
+java:S4488]"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ýÏÂ
+T
+java:S1155k">Use isEmpty() to check whether the collection is empty or not.(ø»•†

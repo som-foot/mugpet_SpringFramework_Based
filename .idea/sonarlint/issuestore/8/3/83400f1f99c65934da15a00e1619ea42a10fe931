@@ -1,0 +1,91 @@
+
+[	java:S112i"FDefine and throw a dedicated exception instead of using a generic one.(îÔŠ
+a	java:S112¢"FDefine and throw a dedicated exception instead of using a generic one.(—¿ Íüÿÿÿÿ
+a	java:S112»"FDefine and throw a dedicated exception instead of using a generic one.(…Ò‰±ûÿÿÿÿ
+a	java:S112Ã"FDefine and throw a dedicated exception instead of using a generic one.(õŞ‰¶şÿÿÿÿ
+\	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(°ñµ·
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¡•ãæûÿÿÿÿ
+p
+java:S2293€"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘¼Ûà
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ï´åõ
+u
+java:S2293Î"YReplace the type specification in this constructor call with the diamond operator ("<>").(©Ñ‚ìÿÿÿÿÿ
+p
+java:S2293Ï"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘¼Ûà
+p
+java:S2293Ğ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ï´åõ
+p
+java:S2293µ"YReplace the type specification in this constructor call with the diamond operator ("<>").(”Ş¤
+p
+java:S2293¶"YReplace the type specification in this constructor call with the diamond operator ("<>").(İŠùö
+p
+java:S2293·"YReplace the type specification in this constructor call with the diamond operator ("<>").(Êı‚¯
+u
+java:S2293º"YReplace the type specification in this constructor call with the diamond operator ("<>").(†Ô¬Ãøÿÿÿÿ
+]
+java:S1192x"GDefine a constant instead of duplicating this literal "spe_id" 4 times.( Í„‚
+g
+java:S1192˜"KDefine a constant instead of duplicating this literal "totalPrice" 3 times.(¨ûå®ıÿÿÿÿ
+]
+java:S1192"FDefine a constant instead of duplicating this literal "point" 3 times.(œ™êÒ
+c
+java:S1192z"HDefine a constant instead of duplicating this literal "petName" 4 times.(Â‹—‚ùÿÿÿÿ
+b
+java:S1192ì"LDefine a constant instead of duplicating this literal "applyPoints" 3 times.(İÈ£t
+k	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¦è­üÿÿÿÿ
+k	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¡Åèÿÿÿÿÿ
+f	java:S117s"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¢¬€
+g	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ïÔî
+l	java:S117§"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ÍÔØúÿÿÿÿ
+l	java:S117»"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…Ò‰±ûÿÿÿÿ
+l	java:S117Å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¡Åèÿÿÿÿÿ
+g	java:S117×"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ïÔî
+l	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â§¿²ÿÿÿÿÿ
+l	java:S117¢"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä¡Åèÿÿÿÿÿ
+g	java:S117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¢¬€
+S
+java:S4973"<Strings and Boxed types should be compared using "equals()".(œ™êÒ
+S
+java:S4973"<Strings and Boxed types should be compared using "equals()".(œ™êÒ
+R
+java:S4973±"<Strings and Boxed types should be compared using "equals()".(ğâç?
+n
+java:S3753"XAdd a call to "setComplete()" on the SessionStatus object in a "@RequestMapping" method.(‡Çˆü
+R
+java:S1854P"7Remove this useless assignment to local variable "mav".(êô§ïøÿÿÿÿ
+E	java:S106N"+Replace this use of System.out by a logger.(É¸ª»øÿÿÿÿ
+‚
+java:S1130i"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(îÔŠ
+c
+java:S4488h"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ÿûå€ıÿÿÿÿ
+Y
+java:S1155v">Use isEmpty() to check whether the collection is empty or not.(‡ù¿Ùıÿÿÿÿ
+`
+java:S4488¡"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(œøÏZ
+ˆ
+java:S1130»"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(…Ò‰±ûÿÿÿÿ
+_
+java:S4488º"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ùå¾Á
+\
+java:S1854Ñ"@Remove this useless assignment to local variable "cartItemSize".(ñÒ ¥üÿÿÿÿ
+ˆ
+java:S1130Ã"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(õŞ‰¶şÿÿÿÿ
+d
+java:S4488Â"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ñ†Â€üÿÿÿÿ
+M
+java:S1481Ñ"1Remove this unused "cartItemSize" local variable.(ñÒ ¥üÿÿÿÿ
+F	java:S106Ù"+Replace this use of System.out by a logger.(ã¾Çıÿÿÿÿ
+`
+java:S4488ù"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(â‘äB
+D	java:S108‘")Either remove or fill this block of code.(±Ÿ—±ÿÿÿÿÿ
+T
+java:S1854¿"8Remove this useless assignment to local variable "info".(‡³âıÿÿÿÿ
+X
+java:S1854µ"ARemove this useless assignment to local variable "orderItemList".(”Ş¤
+f
+java:S4488œ"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(§æÏºûÿÿÿÿ
+F	java:S106¡"+Replace this use of System.out by a logger.(Œ‹ Ùÿÿÿÿÿ
+A	java:S106Ò"+Replace this use of System.out by a logger.(ûï§Ş
+F	java:S106Ô"+Replace this use of System.out by a logger.(ã¾Çıÿÿÿÿ

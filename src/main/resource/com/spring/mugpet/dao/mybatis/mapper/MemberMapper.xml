@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.MemberMapper">
+	<cache />
+
+
+	<insert id="insertAccount" parameterType="MemberInfo">
+	<selectKey resultType="Integer" keyProperty="u_id" order="BEFORE">
+    	SELECT MAX(u_id) + 1
+    	FROM MEMBERINFO
+	</selectKey>
+		INSERT INTO MEMBERINFO
+			(U_ID,NICKNAME, NAME, EMAIL, PWD, PHONENUM, ADDRESS, IMAGEURL, POINT)
+		VALUES
+			(#{u_id},#{nickname}, #{name}, #{email}, #{pwd}, #{phoneNum} ,#{address}, #{imageUrl}, 0)
+	</insert>
+
+
+	<select id="getMemberInfoByEmailandPwd" resultType="MemberInfo">
+		SELECT *
+		FROM MEMBERINFO
+		WHERE EMAIL = #{param1}
+		AND PWD = #{param2}
+	</select>
+	
+	<select id="getNickNameByU_Id" parameterType="int" resultType="String">
+		SELECT nickname
+		FROM MEMBERINFO
+		WHERE u_id=#{u_id}
+	</select>
+	
+	<update id="updatePoints">
+		UPDATE MEMBERINFO
+		SET POINT=#{point}
+		WHERE EMAIL = #{email}
+		AND PWD = #{pwd}
+	</update>
+</mapper>

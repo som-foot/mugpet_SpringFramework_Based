@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.CommunityMapper">
+	<sql id="communityCols">
+		com_id, imageUrl,
+		title, content,
+		enrollDt, likes,
+		replyCnt, u_id
+	</sql>
+	
+	<!-- Community 상세보기 -->
+	<select id="getCom" resultType="Community">
+		SELECT <include refid="communityCols" />
+		FROM Community
+		WHERE com_id=#{com_id}
+	</select>
+	
+	<!-- Community 목록 -->
+	<select id="getComList" resultType="Community">
+		SELECT <include refid="communityCols" />
+		FROM Community
+		ORDER BY enrollDt DESC
+	</select>
+	
+	<!-- Member의 Community 작성 목록 -->
+	<select id="getMemberComList" resultType="Community">
+		SELECT <include refid="communityCols" />
+		FROM Community
+		WHERE u_id=#{u_id}
+		ORDER BY enrollDt DESC
+	</select>
+	
+	<select id="getU_IdByCommunity" resultType="int" parameterType="int">
+		SELECT u_id
+		FROM Community
+		WHERE com_id=#{com_id}
+	</select>
+	
+	<!-- Community 작성 -> sequence, default 값에 따라 selectKey, SYSDATE 사용 -->
+	<insert id="insertCom" parameterType="Community">
+		INSERT INTO Community (<include refid="communityCols" />)
+		VALUES (#{com_id}, #{imageUrl}, #{title}, #{content}, SYSDATE, #{likes}, #{replyCnt}, #{u_id})
+		<selectKey resultType="int" keyProperty="com_id" order="BEFORE">
+			SELECT NVL(MAX(com_id) + 1, 1) FROM Community
+		</selectKey>
+	</insert>
+	
+	<!-- Community 수정 -->
+	<update id="updateCom" parameterType="Community">
+		UPDATE Community
+		SET imageUrl=#{imageUrl},
+		title=#{title},
+		content=#{content},
+		enrollDt=SYSDATE,
+		likes=#{likes},
+		replyCnt=#{replyCnt},
+		u_id=#{u_id}
+		WHERE com_id=#{com_id}
+	</update>
+	
+	<!-- Community 삭제 -> UI상에서 세션 아이디 확인해 본인만 수정/삭제 버튼을 띄워 com_id만 비교 -->
+	<delete id="deleteCom" parameterType="int">
+		DELETE FROM Community
+		WHERE #{com_id}=com_id
+	</delete>
+	
+	<!-- 댓글수 -->
+	<update id="updateReplyCnt">
+		UPDATE Community
+		SET replyCnt=replyCnt+#{amount}
+		WHERE com_id=#{com_id}
+	</update>
+	
+	<!-- 좋아요 수 -->
+	<update id="updateComLikesCnt">
+		UPDATE Community
+		SET likes=likes+#{amount}
+		WHERE com_id=#{com_id}
+	</update>
+</mapper>

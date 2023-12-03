@@ -1,0 +1,17 @@
+
+t
+java:S22939"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ»ö¯ûÿÿÿÿ
+t
+java:S2293n"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ»ö¯ûÿÿÿÿ
+k	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ×ì¹üÿÿÿÿ
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š””€
+k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓèÜòýÿÿÿÿ
+k	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÞÀ·àøÿÿÿÿ
+k	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÞÀ·àøÿÿÿÿ
+s
+java:S3753"XAdd a call to "setComplete()" on the SessionStatus object in a "@RequestMapping" method.(´Ê·‘þÿÿÿÿ
+W
+java:S18549"<Remove this useless assignment to local variable "itemList".(ñ»ö¯ûÿÿÿÿ
+@	java:S106V"+Replace this use of System.out by a logger.(ñ×¯
+W
+java:S1854n"<Remove this useless assignment to local variable "itemList".(ñ»ö¯ûÿÿÿÿ

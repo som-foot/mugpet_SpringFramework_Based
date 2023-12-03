@@ -1,0 +1,13 @@
+
+`	java:S112<"FDefine and throw a dedicated exception instead of using a generic one.(¡Îó½ÿÿÿÿÿ
+f	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã¢¬€
+n
+java:S3753"XAdd a call to "setComplete()" on the SessionStatus object in a "@RequestMapping" method.(‡Çˆü
+‡
+java:S1130<"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(¡Îó½ÿÿÿÿÿ
+c
+java:S4488;"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(¨ÕÎùÿÿÿÿ
+T
+java:S1128"9Remove this unused import 'org.springframework.ui.Model'.(ê†ýÿÿÿÿ
+b
+java:S1128"MRemove this unused import 'com.spring.mugpet.controller.item.ItemController'.(’å¹&

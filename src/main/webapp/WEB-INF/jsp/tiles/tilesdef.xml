@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    
+     <definition name="default" template="/WEB-INF/view/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp" />  
+		<put-attribute name="side" value="" />
+		<put-attribute name="body" value="" />
+	</definition>
+    <definition name="second-default" template="/WEB-INF/view/common/secondLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/common/header.jsp" />  
+		<put-attribute name="body" value="" />
+	</definition>
+	
+	<!-- main -->
+	<definition name="tiles/*" extends="default">
+		<put-attribute name="dynamic_css" value="/resources/css/{1}.css"/>  								
+		<put-attribute name="side" value="/WEB-INF/view/common/mainSide.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/main/{1}.jsp" />												
+	</definition>
+	
+	
+	<definition name="tiles/*/*" extends="default">
+		<put-attribute name="dynamic_css" value="/resources/css/{2}.css"/>  								
+		<put-attribute name="side" value="/WEB-INF/view/common/side.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp" />												
+	</definition>
+	
+	<!-- myPage -->
+	<definition name="tile/myPage/*" extends="default">
+		<put-attribute name="dynamic_css" value="/resources/css/{1}.css"/>  								
+		<put-attribute name="side" value="/WEB-INF/view/myPage/layout/side.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/myPage/{1}.jsp" />												
+	</definition>
+	
+	<!-- login,register -->
+	<definition name="tile/*/*" extends="second-default">							
+		<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp" />												
+	</definition>
+	
+	<!-- community -->
+	<definition name="tiless/community/*" extends="default">
+		<put-attribute name="dynamic_css" value="/resources/css/{1}.css"/>  								
+		<put-attribute name="side" value="/WEB-INF/view/common/mainSide.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/community/{1}.jsp" />												
+	</definition>
+	
+	<!-- usedGoods -->
+	<definition name="tiless/usedGoods/*" extends="default">
+		<put-attribute name="dynamic_css" value="/resources/css/{1}.css"/>  								
+		<put-attribute name="side" value="/WEB-INF/view/common/mainSide.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/usedGoods/{1}.jsp" />												
+	</definition>
+	
+</tiles-definitions>

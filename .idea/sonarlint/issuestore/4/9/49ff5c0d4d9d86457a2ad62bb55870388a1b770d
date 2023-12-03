@@ -1,0 +1,35 @@
+
+[	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(şÁˆŸ
+[	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(Å©äÓ
+[	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(ãÉ­ö
+[	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(ïº˜»
+o
+java:S2293."YReplace the type specification in this constructor call with the diamond operator ("<>").(Œî§
+t
+java:S22939"YReplace the type specification in this constructor call with the diamond operator ("<>").(úéùşÿÿÿÿ
+t
+java:S2293E"YReplace the type specification in this constructor call with the diamond operator ("<>").(É¯ñ„ûÿÿÿÿ
+t
+java:S2293`"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ»ö¯ûÿÿÿÿ
+k	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¯”ƒûÿÿÿÿ
+f	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ€…¾
+f	java:S117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïº˜»
+f	java:S117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïº˜»
+s
+java:S3753"XAdd a call to "setComplete()" on the SessionStatus object in a "@RequestMapping" method.(´Ê·‘şÿÿÿÿ
+‚
+java:S1130-"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(şÁˆŸ
+‚
+java:S11308"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Å©äÓ
+‚
+java:S1130D"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ãÉ­ö
+^
+java:S4488Q"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ì´º£
+R
+java:S1854d"7Remove this useless assignment to local variable "mav".(êô§ïøÿÿÿÿ
+W
+java:S1854`"<Remove this useless assignment to local variable "itemList".(ñ»ö¯ûÿÿÿÿ
+‚
+java:S1130^"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ïº˜»
+e
+java:S4488["JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Çà± ıÿÿÿÿ

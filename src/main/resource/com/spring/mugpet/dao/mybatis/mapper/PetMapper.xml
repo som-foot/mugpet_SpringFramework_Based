@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.PetMapper">
+
+	<sql id="petColumns">NAME,SPE_ID,BIRTH,U_ID</sql>
+	<insert id="insertPet" parameterType="Pet">
+	<selectKey resultType="Integer" keyProperty="pet_id" order="BEFORE">
+    	SELECT NVL(MAX(pet_id),0) + 1
+    	FROM PET
+	</selectKey>
+		INSERT INTO PET
+			(PET_ID,<include refid="petColumns" />)
+		VALUES
+			(#{pet_id},#{name},#{spe_id},#{birth},#{u_id})
+	</insert>
+	
+	
+	<select id="getPetByU_id" resultType="Pet">
+		SELECT *
+		FROM PET
+		WHERE U_ID = #{u_id}
+	</select>
+
+
+
+</mapper>
