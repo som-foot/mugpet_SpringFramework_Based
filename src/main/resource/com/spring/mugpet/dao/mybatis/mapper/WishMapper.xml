@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.WishMapper">
+
+	<sql id="wishCols">
+		w_id, item_id, u_id
+	</sql>
+   
+	<sql id="getWishCols">
+		w.item_id, category_id, spe_id,
+		itemName, price, brand,
+		imageUrl, comments
+	</sql>
+   
+	<select id="getMyWishList" parameterType="int" resultType="Item">
+		SELECT <include refid="getWishCols" />
+		FROM Wish w JOIN Item i ON w.item_id = i.item_id 
+		WHERE u_id=#{u_id}
+	</select>
+	
+	<select id="getMyWishListForMyHome" parameterType="int" resultType="Item">
+		SELECT *
+		FROM ( SELECT <include refid="getWishCols" />
+			FROM Wish w JOIN Item i ON w.item_id = i.item_id 
+			WHERE u_id=#{u_id} )
+		<![CDATA[
+			WHERE ROWNUM <= 3
+		]]>		
+	</select>
+	
+	<select id="isWish" parameterType="int" resultType="Integer">
+		SELECT w_id
+		FROM Wish
+		WHERE item_id=${item_id} AND u_id=#{u_id}
+	</select>
+   
+	<insert id="insertWish" parameterType="Wish">
+		<selectKey resultType="Integer" keyProperty="w_id" order="BEFORE">
+    		SELECT NVL(MAX(w_id),0) + 1
+    		FROM Wish
+		</selectKey>
+		INSERT INTO Wish (<include refid="wishCols" />)
+		VALUES (#{w_id}, #{item_id}, #{u_id})
+	</insert>
+   
+	<delete id="deleteWish" parameterType="int">
+		DELETE FROM Wish
+		WHERE item_id=#{item_id} AND u_id=#{u_id}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.ReplyMapper">
+	<sql id="replyForComCols">
+		rp_id, content,
+		enrollDt, u_id,
+		com_id
+	</sql>
+	
+	<sql id="replyForGoodsCols">
+		rp_id, content,
+		enrollDt, u_id,
+		g_id
+	</sql>
+	
+	<!-- 댓글 목록 -->
+	<select id="getCommunityReplyList" resultType="Reply">
+		SELECT <include refid="replyForComCols" />
+		FROM Reply
+		WHERE com_id=#{com_id}
+		ORDER BY enrollDt DESC
+	</select>
+	
+	<select id="getUsedGoodsReplyList" resultType="Reply">
+		SELECT <include refid="replyForGoodsCols" />
+		FROM Reply
+		WHERE g_id=#{g_id}
+		ORDER BY enrollDt DESC
+	</select>
+	
+	<select id="getU_IdByCommunityReply" resultType="int">
+		SELECT u_id
+		FROM Reply
+		WHERE com_id=#{com_id} AND rp_id=#{rp_id}
+	</select>
+	
+	<select id="getU_IdByUsedGoodsReply" resultType="int">
+		SELECT u_id
+		FROM Reply
+		WHERE g_id=#{g_id} AND rp_id=#{rp_id}
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="insertComReply" parameterType="Reply">
+		INSERT INTO Reply (<include refid="replyForComCols" />)
+		VALUES (#{rp_id}, #{content}, SYSDATE, #{u_id}, #{com_id})
+		<selectKey resultType="int" keyProperty="rp_id" order="BEFORE">
+			SELECT NVL(MAX(rp_id) + 1, 1) FROM Reply
+		</selectKey>
+	</insert>
+	
+	<insert id="insertGoodsReply" parameterType="Reply">
+		INSERT INTO Reply (<include refid="replyForGoodsCols" />)
+		VALUES (#{rp_id}, #{content}, SYSDATE, #{u_id}, #{g_id})
+		<selectKey resultType="int" keyProperty="rp_id" order="BEFORE">
+			SELECT NVL(MAX(rp_id) + 1, 1) FROM Reply
+		</selectKey>
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComReply" parameterType="int">
+		DELETE FROM Reply
+		WHERE rp_id=#{rp_id} AND com_id=#{com_id}
+	</delete>
+	
+	<delete id="deleteGoodsReply" parameterType="int">
+		DELETE FROM Reply
+		WHERE rp_id=#{rp_id} AND g_id=#{g_id}
+	</delete>
+	
+	<!-- 게시글 삭제 시 댓글 전체 삭제 -->
+	<delete id="deleteComAllReply" parameterType="int">
+		DELETE FROM Reply
+		WHERE com_id=#{com_id}
+	</delete>
+	
+	<delete id="deleteGoodsAllReply" parameterType="int">
+		DELETE FROM Reply
+		WHERE g_id=#{g_id}
+	</delete>
+	
+	<!-- 내가 쓴 댓글 목록 -->
+	<select id="getMyReplyList" parameterType="int" resultType="Reply">
+		SELECT *
+		FROM Reply
+		WHERE u_id=#{u_id}
+		ORDER BY enrollDt DESC
+	</select>
+</mapper>

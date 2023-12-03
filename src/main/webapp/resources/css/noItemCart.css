@@ -1,0 +1,33 @@
+.content{
+	padding-top:30px;
+	padding-left:50px;
+	margin: 0 auto;
+}
+
+.message{
+	text-align:center;
+	font-size: 30px;
+	font-weight: bold;
+	color: #BDBDBD;
+}
+
+.goToMainBtn{
+	width: 200px;
+	height: 70px;
+	background-color: #FFD1FF; 
+	border-color: #FFD1FF; 
+	font-weight: bold; 
+	color: #FFFFFF;
+	margin: 0 auto;
+	text-align: center;
+}
+.goToMainBtn:hover{
+	background: #FFD1FF;
+	color: #FFFFFF;
+}
+.bottom{
+	text-align:center;
+	margin: 0 auto;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}

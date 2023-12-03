@@ -1,0 +1,56 @@
+.title{
+	font-size:20px;
+}
+ .semiTitle{
+	font-size:16px; 
+}
+ .userInfo{
+	font-size:13px;
+}
+.detail{
+	float:right;
+}
+.btnSubmit{
+	 width:200px;
+     margin:auto;
+     display:block;
+}
+.productImg {
+	margin:10px 20px;
+	border: 1px solid #A6A6A6;
+}
+ .content{
+	display: inline-block;
+	width:80%;			/*padding값 고려해서 %추가*/
+	padding-top:30px;
+	padding-left:50px;
+}
+.updateBtn {
+	background-color: #FFD1FF; 
+	border-color: #FFD1FF; 
+	font-weight: bold; 
+	color: #FFFFFF;
+}
+.orderBtn {
+	background-color: #FFD1FF; 
+	border-color: #FFD1FF; 
+	font-weight: bold; 
+	color: #FFFFFF;
+	text-align:center;
+}
+.updateBtn:hover{
+	background: #FFD1FF;
+	color: #FFFFFF;
+}
+.orderBtn:hover{
+	background: #FFD1FF;
+	color: #FFFFFF;
+}
+table{
+	width: 100%;
+}
+
+tr{
+	border-bottom: 1px solid #A6A6A6;
+	width: 100%;
+}
