@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReviewMapper">
+	<cache />
+	<sql id="reviewCols">
+		r_id, review, item_id, u_id
+	</sql>
+	
+	<select id="getReivew" parameterType="int" resultType="Review">
+		SELECT <include refid="reviewCols" />
+		FROM Review
+		WHERE r_id=#{r_id}
+	</select>
+	
+	<select id="getItemReivewList" parameterType="int" resultType="Review">
+		SELECT <include refid="reviewCols" />
+		FROM Review
+		WHERE r_id=#{item_id}
+	</select>
+	
+	<select id="getMyReviewList" parameterType="int" resultType="Review">
+		SELECT <include refid="reviewCols" />
+		FROM Review
+		WHERE u_id=#{u_id}
+	</select>
+	
+	<insert id="insertReview">
+		INSERT INTO Review (<include refid="reviewCols" />)
+		VALUES (#{r_id), #{review}, #{item_id}, #{u_id})
+	</insert> 
+	
+	<update id="updateReivew">
+		UPDATE Review
+		SET review=#{review},
+		u_id=#{u_id} 
+		WHERE r_id=#{r_id} AND item_id=#{item_id}
+	</update>
+
+	<delete id="deleteReview">
+		DELETE FROM Review
+		WHERE r_id=#{r_id}
+	</delete>
+</mapper>

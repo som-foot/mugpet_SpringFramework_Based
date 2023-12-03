@@ -1,0 +1,62 @@
+#orderBy {
+	text-align:right;
+	padding:4px 28px 0 0;
+}
+
+#orderBtn {
+	background-color:white;
+	border-color:white;
+	color:black;
+}
+
+#itemList {
+	padding:0 45px;
+	display:flex;	
+}
+
+#itemCards {
+	width: 1228px;
+}
+
+#itemCard {
+	display:inline-block;
+	width:200px; 
+	height:350px;
+	margin:20px;
+}
+
+#itemImg {
+	width:198px;
+	height:198px;
+}
+
+#itemName {
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#brand {
+	font-size: 10px;
+}
+
+#price {
+	font-size: 13px;
+}
+.content{
+	padding-top:10px;
+	margin: 0 auto;
+	height: 500px;
+}
+
+.message{
+	text-align:center;
+	font-size: 30px;
+	font-weight: bold;
+	color: #BDBDBD;
+}
+.bottom{
+	text-align:center;
+	margin: 0 auto;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}

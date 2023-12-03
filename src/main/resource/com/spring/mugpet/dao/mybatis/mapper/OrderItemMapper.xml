@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mugpet.dao.mybatis.mapper.OrderItemMapper">
+	<sql id="orderItemCols">
+		o_id, orderQty,
+		orderAddr, orderPhoneNum, item_id, itemPrice, applyPoints, req, orderTime, u_id
+	</sql>
+	
+	<select id="getOrderItemList" parameterType="OrderItem" resultType="OrderItem">
+		SELECT o_id, orderQty, orderAddr, orderPhoneNum, item_id, itemPrice, req, orderTime, u_id
+		FROM OrderItem
+		WHERE u_id=#{u_id} AND orderTime=#{orderTime} 
+	</select>
+	
+	<select id="getAllOrderTimeList" parameterType="int" resultType="String">
+		SELECT orderTime
+		FROM OrderItem
+		WHERE u_id=#{u_id}
+		GROUP BY orderTime
+		ORDER BY orderTime DESC
+	</select>
+	
+	<select id="getOrderItemInfo" parameterType="int" resultType="Item">
+		SELECT itemName, price, imageUrl, item_id
+		FROM Item
+		WHERE item_id=#{item_id}
+	</select>
+	
+	<select id="getAllOrderItemList" resultType="OrderItemInfos">
+		SELECT o.item_id, o.orderAddr, o.orderQty, o.req, o.itemPrice, o.applyPoints, i.itemName, i.imageUrl
+		FROM OrderItem o JOIN Item i ON o.item_id = i.item_id
+		WHERE u_id=#{u_id} AND orderTime=#{orderTime}
+	</select>
+	
+	<select id="getOrderItemCnt" parameterType="OrderItem" resultType="int">
+		SELECT COUNT(*)
+		FROM OrderItem
+		WHERE u_id=#{u_id}
+	</select>
+	
+	
+	<select id="isCheckOrderItem" parameterType="java.util.HashMap" resultType="OrderItem">
+		SELECT *
+        FROM (SELECT * 
+        	  FROM ORDERITEM 
+		      WHERE u_id=#{u_id}
+		)
+        WHERE item_id=#{item_id} 
+	
+	</select>
+	
+	
+	<insert id="insertOrderItem" parameterType="OrderItem">
+		<selectKey keyProperty="o_id" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(o_id),0) + 1 FROM ORDERITEM
+		</selectKey>
+		INSERT INTO OrderItem (<include refid="orderItemCols" />)
+		VALUES (#{o_id}, #{orderQty}, #{orderAddr}, #{orderPhoneNum}, #{item_id}, #{itemPrice}, #{applyPoints}, #{req}, TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD HH24:MI'), #{u_id})
+	</insert>
+	
+	
+	<delete id="deleteOrderItem" parameterType="com.spring.mugpet.domain.OrderItem">
+		DELETE FROM OrderItem
+		WHERE u_id=#{u_id} AND orderTime=#{orderTime} 
+	</delete>
+	
+
+
+
+</mapper>

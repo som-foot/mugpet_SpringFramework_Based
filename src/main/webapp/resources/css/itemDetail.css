@@ -1,0 +1,129 @@
+
+.itemInfoTable {
+	margin: auto;
+}
+
+#itemImgBox {
+	width: 450px;
+	height: 450px;
+}
+
+#itemImg {
+	width:370px;
+	height:370px;
+}
+
+#info1 {
+	width:500px;
+	height:80px;
+	line-height: 150%;
+	vertical-align : top;
+	padding: 0 10px 0 10px;
+}
+
+#spe {
+	padding:2px 6px;
+	background-color:#FFD1FF;
+	color:white;
+	font-size:13px;
+	border-radius: 30px;
+}
+
+#brand {
+	font-size:13px;
+	margin-left:5px;
+}
+
+#itemName {
+	font-size:27px;
+	font-weight:bold;
+}
+
+#price {
+	height:43px;
+	font-size:20px;
+	font-weight:bold;
+	vertical-align : top;
+	text-align:right;
+	padding-right:20px;
+	border-bottom: 2px solid #FFE593;
+}
+
+#comments {
+	font-size:17px;
+	width:500px;
+	height:190px;
+	padding: 13px 10px 0 10px;
+	vertical-align : top;
+	line-height:120%;
+}
+
+#qtyBox {
+	padding-top:15px;
+	border-top: 2px solid #FFE593;
+	border-bottom: 2px solid #FFE593;
+}
+
+#qtyBtns {
+	width:180px;
+	margin-left:20px;
+}
+
+#minus, #plus {
+	background-color: #FFD1FF;
+	border-color: #FFD1FF;
+	color:white;
+}
+
+#itemQty {
+	border-color: #FFD1FF;
+}
+
+#totalPrice {
+	text-align:right;
+	padding: 10px 20px 0 0;
+	vertical-align : top;
+}
+
+#qtyLabel {
+	font-size:13px;
+	color:grey;
+}
+
+#price2 {
+	font-size:20px;
+	font-weight:bold;
+}
+
+#itemQty {
+	text-align:center;
+}
+
+#btnBox {
+	text-align:right;
+	padding-top: 10px;
+}
+
+#wishBtn {
+	width:40px;
+	height:40px;
+	margin-right: 10px;
+	cursor:pointer;
+}
+
+#cartBtn {
+	background-color:white;
+	color:black;
+	font-weight:bold;
+	border-color: black;
+	margin-right: 10px;
+	padding:8px 35px;
+}
+
+#buyBtn {
+	background-color:#FFE593;
+	font-weight:bold;
+	border-color: #FFE593;
+	padding:8px 35px;
+	margin-right:10px;
+}
