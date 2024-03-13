@@ -172,7 +172,7 @@ public class CartController {
 					if(quantity < 1) {
 						cartService.removeCart(item_id, userSession.getU_id());
 					}
-			}catch(NumberFormatException ex) {
+			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
 			num++;
