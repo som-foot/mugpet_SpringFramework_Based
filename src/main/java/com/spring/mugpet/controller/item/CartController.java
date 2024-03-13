@@ -71,8 +71,8 @@ public class CartController {
 	
 	@RequestMapping("/cart/insertCart")
 	   public ModelAndView addCart(@ModelAttribute("userSession") MemberInfo userSession,
-			   						@RequestParam("item_id")int item_id, @RequestParam("qty")int qty,
-			   						@RequestParam("tmp")int tmp) throws Exception {
+				       @RequestParam("item_id")int item_id, @RequestParam("qty")int qty,
+				       @RequestParam("tmp")int tmp) throws Exception {
 		
 		System.out.println(">>>>>item_id=" + item_id + ", qty=" + qty);
 		
@@ -123,13 +123,13 @@ public class CartController {
 			return mav;
 		}
 			
-		List<Item> cartItemsInfo = new ArrayList<Item>();			//Item 객체를 담을 list 생성 (item의 이름 등 정보들을 사용하기 위해서)
+		List<Item> cartItemsInfo = new ArrayList<Item>();		//Item 객체를 담을 list 생성 (item의 이름 등 정보들을 사용하기 위해서)
 		List<Integer> cartItemsPrice = new ArrayList<Integer>();	//cartItem들의 각 가격을 담은 list 생성
 		List<Integer> cartItemsQty = new ArrayList<Integer>();		//cartItem들의 각 개수를 담은 list 생성
-		int cartItemQty = 0;
-		int totalPrice = 0;											//총 가격
+		int cartItemQty = 0;						
+		int totalPrice = 0;						//총 가격
 		int idx = 0;		
-		int cartItemSize = cartItems.size();  						 //장바구니에 담긴 아이템의 개수
+		int cartItemSize = cartItems.size();  				//장바구니에 담긴 아이템의 개수
 		for(Cart items : cartItems) {
 			int item_id = items.getItem_id();
 			Item info = cartService.getCartItemInfo(item_id);
