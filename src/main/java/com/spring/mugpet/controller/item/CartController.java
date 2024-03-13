@@ -64,7 +64,6 @@ public class CartController {
 		this.itemService = itemService;
 	}
 	
-	//장바구니 항목을 누르면 /cart/myCartList로 연결된다.
 	public void setItemController(ItemController itemController) {
 		this.itemController = itemController;
 	}
@@ -79,7 +78,7 @@ public class CartController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//isCart=1 (이미 카트에 존재하는 상품)
+		//isCart=1 (이미 카트에 존재하는 상품), isCart=0 (상품이 장바구니에 존재하지 않음)
 		int isCart = cartService.isCart(item_id, userSession.getU_id());
 		if (isCart == 0) {
 			Item item = itemService.getItem(item_id);
@@ -157,7 +156,7 @@ public class CartController {
 		return mav;
 	}
 	
-	//각 장바구니 상품의 개수를 수정할 수 있는 메소드
+	//장바구니의 각 상품의 개수를 수정하는 메소드
 	@RequestMapping(value="/cart/updateCartQuantities", method=RequestMethod.POST)
 	public ModelAndView cartItemUpdate(HttpServletRequest request,@ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		
@@ -182,7 +181,7 @@ public class CartController {
 		return new ModelAndView("redirect:/cart/myCartList");
 	}
 	
-	//각각의 물품 삭제할 수 있는 메소드 =>-버튼 클릭시 사라짐
+	//장바구니의 상품을 삭제하는 메소드(-버튼 클릭시 사라짐)
 	@RequestMapping(value="/cart/removeItemFromCart", method=RequestMethod.GET)
 	public ModelAndView handleRequest(@RequestParam("item_id") int item_id, @ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		cartService.removeCart(item_id, userSession.getU_id());
@@ -190,7 +189,7 @@ public class CartController {
 		return new ModelAndView("redirect:/cart/myCartList");
 	}
 
-	//주문하기누르면 계산 페이지로 이동하는 메소드
+	//'주문하기' 버튼을 통해 구매 페이지로 이동하는 메소드
 	@RequestMapping(value="/cart/order", method=RequestMethod.GET)
 	public ModelAndView cartToOrder(@ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		
