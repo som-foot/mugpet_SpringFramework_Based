@@ -68,9 +68,9 @@ public class CartController {
 		this.itemController = itemController;
 	}
 	
-	
+	//장바구니에 아이템 추가
 	@RequestMapping("/cart/insertCart")
-	   public ModelAndView addCart(@ModelAttribute("userSession") MemberInfo userSession,
+	public ModelAndView addCart(@ModelAttribute("userSession") MemberInfo userSession,
 				       @RequestParam("item_id")int item_id, @RequestParam("qty")int qty,
 				       @RequestParam("tmp")int tmp) throws Exception {
 		
@@ -156,7 +156,7 @@ public class CartController {
 		return mav;
 	}
 	
-	//장바구니의 각 상품의 개수를 수정하는 메소드
+	//장바구니의 각 상품의 개수를 조정 시 수정
 	@RequestMapping(value="/cart/updateCartQuantities", method=RequestMethod.POST)
 	public ModelAndView cartItemUpdate(HttpServletRequest request,@ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		
@@ -181,7 +181,7 @@ public class CartController {
 		return new ModelAndView("redirect:/cart/myCartList");
 	}
 	
-	//장바구니의 상품을 삭제하는 메소드(-버튼 클릭시 사라짐)
+	//장바구니의 상품을 삭제(-버튼 클릭시 사라짐)
 	@RequestMapping(value="/cart/removeItemFromCart", method=RequestMethod.GET)
 	public ModelAndView handleRequest(@RequestParam("item_id") int item_id, @ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		cartService.removeCart(item_id, userSession.getU_id());
@@ -189,7 +189,7 @@ public class CartController {
 		return new ModelAndView("redirect:/cart/myCartList");
 	}
 
-	//'주문하기' 버튼을 통해 구매 페이지로 이동하는 메소드
+	//'주문하기' 버튼을 통해 구매 페이지로 이동
 	@RequestMapping(value="/cart/order", method=RequestMethod.GET)
 	public ModelAndView cartToOrder(@ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		
@@ -244,7 +244,7 @@ public class CartController {
 		return mav;
 	}
 	
-	
+	//주문페이지에서의 적립금 적용 (formaction="/order"로 처리)
 	@RequestMapping(value="/cart/order", method=RequestMethod.POST)
 	public ModelAndView pointUpdate(HttpServletRequest request, @ModelAttribute("userSession") MemberInfo userSession, @ModelAttribute("command") CartCommand command) throws Exception{ 
 			
@@ -280,6 +280,7 @@ public class CartController {
 			return mav;
 	}
 
+	//주문완료 시 주문 테이블 변경, 화면 이동 및 필요한 정보 처리
 	@RequestMapping(value="/cart/ordering", method=RequestMethod.POST)
 	public ModelAndView submit(HttpServletRequest request, @ModelAttribute("userSession") MemberInfo userSession, 
 							@ModelAttribute("orderItemCommand") OrderItemCommand command,
