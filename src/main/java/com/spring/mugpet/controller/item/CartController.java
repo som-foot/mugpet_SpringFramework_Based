@@ -64,22 +64,21 @@ public class CartController {
 		this.itemService = itemService;
 	}
 	
-	//장바구니 항목을 누르면 /cart/myCartList로 연결된다.
 	public void setItemController(ItemController itemController) {
 		this.itemController = itemController;
 	}
 	
-	
+	//장바구니에 아이템 추가
 	@RequestMapping("/cart/insertCart")
-	   public ModelAndView addCart(@ModelAttribute("userSession") MemberInfo userSession,
-			   						@RequestParam("item_id")int item_id, @RequestParam("qty")int qty,
-			   						@RequestParam("tmp")int tmp) throws Exception {
+	public ModelAndView addCart(@ModelAttribute("userSession") MemberInfo userSession,
+				       @RequestParam("item_id")int item_id, @RequestParam("qty")int qty,
+				       @RequestParam("tmp")int tmp) throws Exception {
 		
 		System.out.println(">>>>>item_id=" + item_id + ", qty=" + qty);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//isCart=1 (이미 카트에 존재하는 상품)
+		//isCart=1 (이미 카트에 존재하는 상품), isCart=0 (상품이 장바구니에 존재하지 않음)
 		int isCart = cartService.isCart(item_id, userSession.getU_id());
 		if (isCart == 0) {
 			Item item = itemService.getItem(item_id);
@@ -124,13 +123,13 @@ public class CartController {
 			return mav;
 		}
 			
-		List<Item> cartItemsInfo = new ArrayList<Item>();			//Item 객체를 담을 list 생성 (item의 이름 등 정보들을 사용하기 위해서)
+		List<Item> cartItemsInfo = new ArrayList<Item>();		//Item 객체를 담을 list 생성 (item의 이름 등 정보들을 사용하기 위해서)
 		List<Integer> cartItemsPrice = new ArrayList<Integer>();	//cartItem들의 각 가격을 담은 list 생성
 		List<Integer> cartItemsQty = new ArrayList<Integer>();		//cartItem들의 각 개수를 담은 list 생성
-		int cartItemQty = 0;
-		int totalPrice = 0;											//총 가격
+		int cartItemQty = 0;						
+		int totalPrice = 0;						//총 가격
 		int idx = 0;		
-		int cartItemSize = cartItems.size();  						 //장바구니에 담긴 아이템의 개수
+		int cartItemSize = cartItems.size();  				//장바구니에 담긴 아이템의 개수
 		for(Cart items : cartItems) {
 			int item_id = items.getItem_id();
 			Item info = cartService.getCartItemInfo(item_id);
@@ -157,7 +156,7 @@ public class CartController {
 		return mav;
 	}
 	
-	//각 장바구니 상품의 개수를 수정할 수 있는 메소드
+	//장바구니의 각 상품의 개수를 조정 시 수정
 	@RequestMapping(value="/cart/updateCartQuantities", method=RequestMethod.POST)
 	public ModelAndView cartItemUpdate(HttpServletRequest request,@ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		
@@ -173,7 +172,7 @@ public class CartController {
 					if(quantity < 1) {
 						cartService.removeCart(item_id, userSession.getU_id());
 					}
-			}catch(NumberFormatException ex) {
+			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
 			num++;
@@ -182,7 +181,7 @@ public class CartController {
 		return new ModelAndView("redirect:/cart/myCartList");
 	}
 	
-	//각각의 물품 삭제할 수 있는 메소드 =>-버튼 클릭시 사라짐
+	//장바구니의 상품을 삭제(-버튼 클릭시 사라짐)
 	@RequestMapping(value="/cart/removeItemFromCart", method=RequestMethod.GET)
 	public ModelAndView handleRequest(@RequestParam("item_id") int item_id, @ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		cartService.removeCart(item_id, userSession.getU_id());
@@ -190,7 +189,7 @@ public class CartController {
 		return new ModelAndView("redirect:/cart/myCartList");
 	}
 
-	//주문하기누르면 계산 페이지로 이동하는 메소드
+	//'주문하기' 버튼을 통해 구매 페이지로 이동
 	@RequestMapping(value="/cart/order", method=RequestMethod.GET)
 	public ModelAndView cartToOrder(@ModelAttribute("userSession") MemberInfo userSession) throws Exception{
 		
@@ -245,7 +244,7 @@ public class CartController {
 		return mav;
 	}
 	
-	
+	//주문페이지에서의 적립금 적용 (formaction="/order"로 처리)
 	@RequestMapping(value="/cart/order", method=RequestMethod.POST)
 	public ModelAndView pointUpdate(HttpServletRequest request, @ModelAttribute("userSession") MemberInfo userSession, @ModelAttribute("command") CartCommand command) throws Exception{ 
 			
@@ -281,6 +280,7 @@ public class CartController {
 			return mav;
 	}
 
+	//주문완료 시 주문 테이블 변경, 화면 이동 및 필요한 정보 처리
 	@RequestMapping(value="/cart/ordering", method=RequestMethod.POST)
 	public ModelAndView submit(HttpServletRequest request, @ModelAttribute("userSession") MemberInfo userSession, 
 							@ModelAttribute("orderItemCommand") OrderItemCommand command,
