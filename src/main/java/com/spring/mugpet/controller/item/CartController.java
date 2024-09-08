@@ -253,7 +253,7 @@ public class CartController {
 			
 			int allPoints = memberInfo.getPoint();
 	
-			if(request.getParameter("point") == "" || request.getParameter("point") == "0") { 
+			if("".equals(request.getParameter("point")) || "0".equals(request.getParameter("point"))) { 
 				applyPoints = 0;
 				
 				mav.addObject(applyPoints);
