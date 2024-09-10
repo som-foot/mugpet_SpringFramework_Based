@@ -326,7 +326,7 @@ public class CartController {
 				totalPrice = info.getPrice() * qty;
 				orderQty = 1;
 				
-				OrderItem orderItem = new OrderItem(orderItemQty, address, phoneNum, item_id, itemPrice, applyPoints, req, u_id);
+				OrderItem orderItem = new OrderItem(qty, address, phoneNum, item_id, totalPrice, applyPoints, req, u_id);
 				orderItemService.insertOrderItem(orderItem);
 				
 		} else {
